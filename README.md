@@ -46,6 +46,15 @@
 
 6. **In the chat:** Type your message and press Enter. Type `quit`, `exit`, or `q` to exit. Use **Ctrl+C** to cancel a long-running tool (e.g. research).
 
+## Running tests
+
+From the project root (with dependencies installed):
+
+```bash
+# Run all tests
+python -m unittest discover -s tests -v
+```
+
 ---
 
 ## Features

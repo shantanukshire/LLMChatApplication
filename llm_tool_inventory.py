@@ -11,7 +11,7 @@ from typing import Any, Dict, List
 import httpx
 
 ELYOS_AI_DOMAIN_URL = "https://elyos-interview-907656039105.europe-west2.run.app"
-API_GET_WEATHER_TIMEOUT_IN_SECS = 2
+API_GET_WEATHER_TIMEOUT_IN_SECS = 3
 API_RESEARCH_TOPIC_TIMEOUT_IN_SECS = 10
 
 

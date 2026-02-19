@@ -65,11 +65,9 @@
 ### Example Interactions
 
 ```
-You: whats the weather in London?
+You: What's the weather in London?
 Assistant: [calls get_weather]
-I couldn’t fetch live weather for London right now (the weather lookup timed out).
-
-If you tell me whether you mean **London, UK** (default) or another London, and whether you want **current conditions** or a **forecast**, I can try again—or you can share a link/screenshot from your weather app and I’ll summarize it.
+London: **5.3 °C**, **partly cloudy**, **93% humidity**.
 
 You: Research quantum computing
 Assistant: [calls research_topic]

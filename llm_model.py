@@ -12,7 +12,7 @@ from typing import Any, AsyncIterator, Dict, List, Optional
 
 from openai import AsyncOpenAI
 
-from llm_tool_inventory import ToolInventory
+from tool_inventory import ToolInventory
 
 MODEL_NAME = "gpt-5.2"
 MAX_TOOL_ROUNDS = 3

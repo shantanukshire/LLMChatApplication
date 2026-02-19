@@ -5,6 +5,7 @@
 1. **Prerequisites:** Python 3.10+.
 
 2. **Create and activate a virtual environment** (optional but recommended):
+
    ```bash
    python -m venv .venv
    # Windows (PowerShell or CMD):
@@ -14,6 +15,7 @@
    ```
 
 3. **Install dependencies:**
+
    ```bash
    pip install -r requirements.txt
    ```
@@ -23,17 +25,21 @@
    - `ELYOS_AI_API_KEY` — API key for the weather and research tools.
 
    Example (Windows PowerShell):
+
    ```powershell
    $env:OPENAI_API_KEY = "your-openai-key"
    $env:ELYOS_AI_API_KEY = "your-elyos-key"
    ```
+
    Example (macOS/Linux):
+
    ```bash
    export OPENAI_API_KEY="your-openai-key"
    export ELYOS_AI_API_KEY="your-elyos-key"
    ```
 
 5. **Run the application:**
+
    ```bash
    python main.py
    ```
@@ -59,21 +65,29 @@
 ### Example Interactions
 
 ```
-You: What's the weather in Tokyo?
+You: whats the weather in London?
 Assistant: [calls get_weather]
-The weather in Tokyo is currently 22°C and sunny.
+I couldn’t fetch live weather for London right now (the weather lookup timed out).
 
-You: Research renewable energy trends
-Assistant: [calls research_topic]
-Researching renewable energy trends... (Ctrl+C to cancel)
-[3-8 seconds pass]
-Based on my research, here are the key trends in renewable energy...
+If you tell me whether you mean **London, UK** (default) or another London, and whether you want **current conditions** or a **forecast**, I can try again—or you can share a link/screenshot from your weather app and I’ll summarize it.
 
 You: Research quantum computing
 Assistant: [calls research_topic]
 Researching quantum computing... (Ctrl+C to cancel)
-[user presses Ctrl+C after 2 seconds]
-Research cancelled.
+[Ctrl+C pressed]
+Research tool cancelled.
+Operation cancelled.
 
-You:
+
+You: Research medical science
+Assistant: [calls research_topic]
+Researching medical science... (Ctrl+C to cancel)
+[Ctrl+C pressed]
+Research tool cancelled.
+Operation cancelled.
+
+
+You: exit
+
+Exiting...
 ```

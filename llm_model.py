@@ -126,7 +126,11 @@ class LLMModel:
                 except json.JSONDecodeError:
                     args = {}
 
-                print(self.tool_inventory.get_tool_pre_execute_msg(func_call.name, args), end="", flush=True)
+                print(
+                    self.tool_inventory.get_tool_pre_execute_msg(func_call.name, args),
+                    end="",
+                    flush=True,
+                )
                 try:
                     result = await asyncio.wait_for(
                         self.tool_inventory.execute_tool(func_call.name, args),
@@ -134,7 +138,11 @@ class LLMModel:
                     )
                 except asyncio.CancelledError:
                     # Task cancelled due to user interruption (Ctrl+C) during tool execution
-                    print(self.tool_inventory.get_tool_cancel_msg(func_call.name, args), end="", flush=True)
+                    print(
+                        self.tool_inventory.get_tool_cancel_msg(func_call.name, args),
+                        end="",
+                        flush=True,
+                    )
                     raise
                 except asyncio.TimeoutError:
                     result = {"error": f"{func_call.name} timed out"}

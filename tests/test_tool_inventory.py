@@ -63,7 +63,9 @@ class TestToolInventory(unittest.TestCase):
 
     @patch.dict(os.environ, {"ELYOS_AI_API_KEY": "test-key"})
     @patch("tool_inventory.httpx.AsyncClient")
-    def test_get_weather_success(self, mock_client_class: unittest.mock.MagicMock) -> None:
+    def test_get_weather_success(
+        self, mock_client_class: unittest.mock.MagicMock
+    ) -> None:
         mock_response = unittest.mock.MagicMock()
         mock_response.status_code = 200
         mock_response.text = "{}"
@@ -71,7 +73,7 @@ class TestToolInventory(unittest.TestCase):
             "location": "London",
             "temperature_c": 5.4,
             "condition": "Partly cloudy",
-            "humidity": 93
+            "humidity": 93,
         }
         mock_client = unittest.mock.MagicMock()
         mock_client.get = AsyncMock(return_value=mock_response)
@@ -153,19 +155,17 @@ class TestToolInventory(unittest.TestCase):
 
     @patch.dict(os.environ, {"ELYOS_AI_API_KEY": "test-key"})
     @patch("tool_inventory.httpx.AsyncClient")
-    def test_research_topic_success(self, mock_client_class: unittest.mock.MagicMock) -> None:
+    def test_research_topic_success(
+        self, mock_client_class: unittest.mock.MagicMock
+    ) -> None:
         mock_response = unittest.mock.MagicMock()
         mock_response.status_code = 200
         mock_response.text = "{}"
-        mock_response.json.return_value = {    
-            "topic": "quantum computing",    
-            "summary": "Research summary for 'quantum computing'.",    
-            "sources": [        
-                "nature.com",        
-                "sciencedirect.com",        
-                "arxiv.org"    
-                ],    
-            "generated_at": "2026-02-19"
+        mock_response.json.return_value = {
+            "topic": "quantum computing",
+            "summary": "Research summary for 'quantum computing'.",
+            "sources": ["nature.com", "sciencedirect.com", "arxiv.org"],
+            "generated_at": "2026-02-19",
         }
         mock_client = unittest.mock.MagicMock()
         mock_client.get = AsyncMock(return_value=mock_response)
@@ -178,8 +178,12 @@ class TestToolInventory(unittest.TestCase):
                 "research_topic", {"topic": "quantum computing"}
             )
             self.assertEqual(result["topic"], "quantum computing")
-            self.assertEqual(result["summary"], "Research summary for 'quantum computing'.")
-            self.assertEqual(result["sources"], ["nature.com", "sciencedirect.com", "arxiv.org"])
+            self.assertEqual(
+                result["summary"], "Research summary for 'quantum computing'."
+            )
+            self.assertEqual(
+                result["sources"], ["nature.com", "sciencedirect.com", "arxiv.org"]
+            )
             self.assertEqual(result["generated_at"], "2026-02-19")
 
         asyncio.run(run())
@@ -198,9 +202,7 @@ class TestToolInventory(unittest.TestCase):
         inv = ToolInventory()
 
         async def run() -> None:
-            result = await inv.execute_tool(
-                "research_topic", {"topic": "AI"}
-            )
+            result = await inv.execute_tool("research_topic", {"topic": "AI"})
             self.assertEqual(result["error"], "request_timeout")
             self.assertIn("research_topic", result["detail"])
 

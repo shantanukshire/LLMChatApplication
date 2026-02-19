@@ -76,7 +76,6 @@ class ToolInventory:
     async def execute_tool(
         self, tool_name: str, args: Dict[str, Any]
     ) -> Dict[str, Any]:
-        print(f"sha5 : Request for tool {tool_name} with args {args}")
         if tool_name == "get_weather":
             return await _get_weather(**args)
         elif tool_name == "research_topic":
@@ -89,7 +88,6 @@ class ToolInventory:
 
 
 async def _get_weather(location: str) -> Dict[str, Any]:
-    print("sha5 : Inside get_weather with location ", location)
     return await _get_http_request(
         url=f"{ELYOS_AI_DOMAIN_URL}/weather",
         headers={"X-API-Key": os.environ["ELYOS_AI_API_KEY"]},

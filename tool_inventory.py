@@ -116,7 +116,6 @@ async def _get_http_request(
 ) -> Dict[str, Any]:
     """Perform a HTTP GET request; returns JSON body as dict or an error dict."""
     try:
-        print("i got params as ", params)
         async with httpx.AsyncClient(timeout=timeout_in_secs) as client:
             r = await client.get(
                 url=url,
